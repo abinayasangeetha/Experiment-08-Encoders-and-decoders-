@@ -100,6 +100,7 @@ or(a1,y7,y6,y3,y2);
 or(a2,y7,y6,y5,y4);
 endmodule
 ```
+#### Decoder
 ```
 module decoder(a0,a1,a2,y0,y1,y2,y3,y4,y5,y6,y7);
 input a0,a1,a2;
