@@ -1,10 +1,17 @@
-# Experiment-08- Encoders-and-decoders 
-### AIM: To implement 8 to 3 Encoder and  3to8 Decoder using verilog and validate its outputs
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
-### THEORY 
+```
+Name:ABINAYA S
+Register Number: 212222230002
+```
+# Experiment-08 Encoders and decoders 
+### AIM: 
+To implement 8 to 3 Encoder and  3to8 Decoder using verilog and validate its outputs
+### HARDWARE REQUIRED: 
+– PC, Cyclone II , USB flasher
+### SOFTWARE REQUIRED:  
+Quartus prime
+### THEORY:
 
-## Encoders
+#### Encoders
 Binary code of N digits can be used to store 2N distinct elements of coded information. This is what encoders and decoders are used for. Encoders convert 2N lines of input into a code of N bits and Decoders decode the N bits into 2N lines.
 
 1. Encoders –
@@ -13,7 +20,7 @@ An encoder is a combinational circuit that converts binary information in the fo
 As an example, let’s consider Octal to Binary encoder. As shown in the following figure, an octal-to-binary encoder takes 8 input lines and generates 3 output lines.
 
 ![image](https://user-images.githubusercontent.com/36288975/171543588-bc0746df-a173-4b35-989e-5fb7d385fe8a.png)
-## Figure -01 3 to 8 Encoder 
+#### Figure -01 3 to 8 Encoder 
 
 
 Implementation –
@@ -25,9 +32,9 @@ Hence, the encoder can be realised with OR gates as follows:
 
 
 ![image](https://user-images.githubusercontent.com/36288975/171543740-68403b82-aa93-4c98-9343-f32b14885a2e.png)
-## Figure -02 3 to 8 Encoder implenentation 
+#### Figure -02 3 to 8 Encoder implenentation 
 
- ### Decoders 
+ #### Decoders 
 A decoder does the opposite job of an encoder. It is a combinational circuit that converts n lines of input into 2n lines of output.
 
 Let’s take an example of 3-to-8 line decoder.
@@ -47,50 +54,100 @@ D7 = X Y Z
 
 
 ![image](https://user-images.githubusercontent.com/36288975/171543978-ee2d0671-2846-40a1-8705-507fd6287a49.png)
-## Figure -03 8 to 3 Decoder 
+#### Figure -03 8 to 3 Decoder 
 
 
 
 ![image](https://user-images.githubusercontent.com/36288975/171543866-5a6eace6-8683-49d7-9c4f-a7cb30ec3035.png)
-## Figure -04 8 to 3 Decoder implementation 
+#### Figure -04 8 to 3 Decoder implementation 
 
-### Procedure
-/* write all the steps invloved */
+### Procedure:
+1. Create a New Project:
+   - Open Quartus and create a new project by selecting "File" > "New Project Wizard."
+   - Follow the wizard's instructions to set up your project, including specifying the project name, location, and target device (FPGA).
+
+2. Create a New Design File:
+   - Once the project is created, right-click on the project name in the Project Navigator and select "Add New File."
+   - Choose "Verilog HDL File" or "VHDL File," depending on your chosen hardware description language.
+
+3. Write the Combinational Logic Code:
+   - Open the newly created Verilog or VHDL file and write the code for your combinational logic.
+     
+4. Compile the Project:
+   - To compile the project, click on "Processing" > "Start Compilation" in the menu.
+   - Quartus will analyze your code, synthesize it into a netlist, and perform optimizations based on your target FPGA device.
+
+5. Analyze and Fix Errors:*
+   - If there are any errors or warnings during the compilation process, Quartus will display them in the Messages window.
+   - Review and fix any issues in your code if necessary.
+   - View the RTL diagram.
+
+6.*Verification:
+   - Click on "File" > "New" > "Verification/Debugging Files" > "University Program VWF".
+   - Once Waveform is created Right Click on the Input/Output Panel > " Insert Node or Bus" > Click on Node Finder > Click On "List" > Select All.
+   - Give the Input Combinations according to the Truth Table amd then simulate the Output Waveform.
 
 
 
 ### PROGRAM 
-/*
-Program for Endocers and Decoders  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+##### Encoder:
+```
+module encoder(a0,a1,a2,y0,y1,y2,y3,y4,y5,y6,y7);
+input y0,y1,y2,y3,y4,y5,y6,y7;
+output a0,a1,a2;
+or(a0,y7,y5,y3,y1);
+or(a1,y7,y6,y3,y2);
+or(a2,y7,y6,y5,y4);
+endmodule
+```
+```
+module decoder(a0,a1,a2,y0,y1,y2,y3,y4,y5,y6,y7);
+input a0,a1,a2;
+output y0,y1,y2,y3,y4,y5,y6,y7;
+wire a0bar,a1bar,a2bar;
+not(a0bar,a0);
+not(a1bar,a1);
+not(a2bar,a2);
+and(y0,a0bar,a1bar,a2bar);
+and(y1,a0,a1bar,a2bar);
+and(y2,a0bar,a1,a2bar);
+and(y3,a0,a1,a2bar);
+and(y4,a0bar,a1bar,a2);
+and(y5,a0,a1bar,a2);
+and(y6,a0bar,a1,a2);
+and(y7,a0,a1,a2);
+endmodule
+
+```
+
+### RTL DIAGRAM:
+#### Encoder-
+![image](https://github.com/abinayasangeetha/Experiment-08-Encoders-and-decoders-/assets/119393675/06354e59-bfb9-4ce7-8e3a-083e1469e899)
+
+#### Decoder-
+![image](https://github.com/abinayasangeetha/Experiment-08-Encoders-and-decoders-/assets/119393675/00135113-0b67-4d74-bd5d-6daebf714987)
 
 
 
 
 
 
-### RTL LOGIC  
+### TRUTH TABLE :
+#### Encoder-
+![image](https://github.com/abinayasangeetha/Experiment-08-Encoders-and-decoders-/assets/119393675/df5f3be6-acfd-4a94-8c0c-4b1950581d6f)
+
+#### Decoder:
+![image](https://github.com/abinayasangeetha/Experiment-08-Encoders-and-decoders-/assets/119393675/14fd5801-6935-42e7-a8d4-cabdc08a6371)
+
+
+### OUTPUT WAVEFORM:
+#### Encoder-
+![image](https://github.com/abinayasangeetha/Experiment-08-Encoders-and-decoders-/assets/119393675/353685f5-8965-45e2-8a67-169ff7d6fe0d)
+
+#### Decoder-
+![image](https://github.com/abinayasangeetha/Experiment-08-Encoders-and-decoders-/assets/119393675/ed08da76-3f77-4446-9060-ed3b8db8304f)
 
 
 
-
-
-
-
-
-### TIMING DIGRAMS  
-
-
-
-
-
-### TRUTH TABLE 
-
-
-
-
-
-
-### RESULTS 
+### RESULT:
+Thus the program to design encoder and decoder is executed successfully .
