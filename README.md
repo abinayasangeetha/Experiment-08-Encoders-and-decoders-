@@ -143,7 +143,7 @@ endmodule
 
 ### OUTPUT WAVEFORM:
 #### Encoder-
-![Screenshot 2023-11-10 094105](https://github.com/abinayasangeetha/Experiment-08-Encoders-and-decoders-/assets/119393675/6170a553-a17f-44f7-8dbf-019b7d8b2c26)
+![image](https://github.com/abinayasangeetha/Experiment-08-Encoders-and-decoders-/assets/119393675/51212675-b6ff-4b2c-bbc5-149527676f0c)
 
 #### Decoder-
 ![image](https://github.com/abinayasangeetha/Experiment-08-Encoders-and-decoders-/assets/119393675/ed08da76-3f77-4446-9060-ed3b8db8304f)
